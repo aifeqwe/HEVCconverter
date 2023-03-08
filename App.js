@@ -56,11 +56,11 @@ export default function App() {
           message={errorModalMessage}
           onClose={() => setErrorModalVisible(false)}
         />
-        <SuccessModal
+       <SuccessModal
           visible={successModalVisible}
           message={successModalMessage}
           onClose={() => setSuccessModalVisible(false)}
-        />
+  />
       </View>
     </>
   );
