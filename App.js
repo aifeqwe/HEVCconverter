@@ -7,7 +7,6 @@ import ChooseVideo from './screens/ChooseVideo';
 import ConvertVideo from './screens/ConvertVideo';
 import ErrorModal from './components/ErrorModal';
 import SuccessModal from './components/SuccessModal';
-
 import styles from './components/styles';
 
 const Stack = createStackNavigator();
