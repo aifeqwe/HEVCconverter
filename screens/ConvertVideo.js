@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native';
-import Video from 'react-native-video-processing';
+import { execute } from 'react-native-ffmpeg';
 
 const ConvertVideo = ({ navigation, route }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,12 +10,10 @@ const ConvertVideo = ({ navigation, route }) => {
   const convertVideo = async () => {
     setIsLoading(true);
     try {
-      const result = await Video.convert({
-        input: videoUrl,
-        output: '/path/to/converted/video.mp4',
-        quality: '720p',
-      });
-      setConvertedUrl(result.output);
+      const output = '-c:v libx265 -preset ultrafast -crf 22 -c:a copy';
+      const path = '/path/to/output.mp4';
+      await execute(`-i ${videoUrl} ${output} ${path}`);
+      setConvertedUrl(path);
     } catch (error) {
       console.error(error);
     } finally {
