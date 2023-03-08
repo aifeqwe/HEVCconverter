@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native';
-import axios from 'axios';
+import Video from 'react-native-video-processing';
 
 const ConvertVideo = ({ navigation, route }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,10 +10,12 @@ const ConvertVideo = ({ navigation, route }) => {
   const convertVideo = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post('https://video-conversion-api.com/convert', {
-        videoUrl: videoUrl,
+      const result = await Video.convert({
+        input: videoUrl,
+        output: '/path/to/converted/video.mp4',
+        quality: '720p',
       });
-      setConvertedUrl(response.data.convertedUrl);
+      setConvertedUrl(result.output);
     } catch (error) {
       console.error(error);
     } finally {
