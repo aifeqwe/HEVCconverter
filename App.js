@@ -5,8 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home';
 import ChooseVideo from './screens/ChooseVideo';
 import ConvertVideo from './screens/ConvertVideo';
-import { ErrorModal, SuccessModal } from './components';
-import styles from './styles';
+import ErrorModal from './components/ErrorModal';
+import SuccessModal from './components/SuccessModal';
+
+import styles from './components/styles';
 
 const Stack = createStackNavigator();
 
